@@ -3,7 +3,7 @@ package mavgen;
 import java.util.Random;
 
 @SuppressWarnings("boxing")
-public class Main {
+public class MavGen {
 
 	private static String USAGE = "Utilizzo:" +
 			"\n" + "mavgen -m [n [<abi>]]" +
@@ -176,7 +176,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		Main instance = new Main();
+		MavGen instance = new MavGen();
 		instance.getArgs(args);
 		instance.execute();
 	}
