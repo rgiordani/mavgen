@@ -6,13 +6,14 @@ import java.util.Random;
 public class MavGen {
 
 	private static String USAGE = "Utilizzo:" +
-			"\n" + "mavgen -m [n [<abi>]]" +
+			"\n" +
+			"\n" + "java -jar mavgen.jar -m [n [<abi>]]" +
 			"\n" + "    genera 1 o n MAV" +
 			"\n" +
-			"\n" + "mavgen -r [n [<abi>]]" +
+			"\n" + "java -jar mavgen.jar -r [n [<abi>]]" +
 			"\n" + "    genera 1 o n RAV" +
 			"\n" +
-			"\n" + "mavgen <abi> <numero> <importo>" +
+			"\n" + "java -jar mavgen.jar <abi> <numero> <importo>" +
 			"\n" + "    calcolo CIN" +
 			"\n";
 
@@ -63,9 +64,7 @@ public class MavGen {
 			String[] impParts = args[2].split("[,\\.]");
 			if (impParts.length > 2)
 				abort("Importo non valido");
-			Integer.parseInt(impParts[0]);
-			Integer.parseInt(impParts[1]);
-			this.paramImporto = impParts[0] + "," + impParts[1];
+			this.paramImporto = String.valueOf(Integer.parseInt(impParts[0])) + "," + (impParts.length == 2 ? (impParts[1] + "00").substring(0, 2) : "00");
 
 		} catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
 			abort(USAGE);
